@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotifyDBT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>เว็บไซต์แจ้งเตือนกิจกรรมสาขาวิชาเทคโนโลยีธุรกิจดิจิทัล/วิทยาลัยเทคนิคราชบุรี</h1>
+    </header>
+    <main>
+        <section id="menu">
+            <button id="all-btn">กิจกรรมทั้งหมด</button>
+            <button id="department-btn">กิจกรรมสาขาวิชา</button>
+            <button id="college-btn">กิจกรรมวิทยาลัย</button>
+            <button id="login-btn">เข้าสู่ระบบแอดมิน</button>
+        </section>
+        <section id="calendar-section">
+            <div id="calendar"></div>
+        </section>
+        <section id="event-list" style="display: none;">
+            <!-- รายการกิจกรรมจะแสดงที่นี่ -->
+        </section>
+        <section id="add-event" style="display: none;">
+            <h3>เพิ่มกิจกรรมใหม่</h3>
+            <form id="event-form">
+                <label for="title">ชื่อกิจกรรม:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="date">วันที่:</label>
+                <input type="date" id="date" name="date" required>
+                <label for="start-time">เวลาเริ่มต้น:</label>
+                <input type="time" id="start-time" name="start-time" required>
+                <label for="end-time">เวลาสิ้นสุด:</label>
+                <input type="time" id="end-time" name="end-time" required>
+                <label for="location">สถานที่:</label>
+                <input type="text" id="location" name="location" required>
+                <label for="category">ประเภท:</label>
+                <select id="category" name="category" required>
+                    <option value="department">สาขาวิชา</option>
+                    <option value="college">วิทยาลัย</option>
+                </select>
+                <button type="submit">เพิ่มกิจกรรม</button>
+            </form>
+        </section>
+        <section id="edit-event" style="display: none;">
+            <h3>แก้ไขกิจกรรม</h3>
+            <form id="edit-event-form">
+                <input type="hidden" id="edit-event-id">
+                <label for="edit-title">ชื่อกิจกรรม:</label>
+                <input type="text" id="edit-title" name="title" required>
+                <label for="edit-date">วันที่:</label>
+                <input type="date" id="edit-date" name="date" required>
+                <label for="edit-start-time">เวลาเริ่มต้น:</label>
+                <input type="time" id="edit-start-time" name="start-time" required>
+                <label for="edit-end-time">เวลาสิ้นสุด:</label>
+                <input type="time" id="edit-end-time" name="end-time" required>
+                <label for="edit-location">สถานที่:</label>
+                <input type="text" id="edit-location" name="location" required>
+                <label for="edit-category">ประเภท:</label>
+                <select id="edit-category" name="category" required>
+                    <option value="department">สาขาวิชา</option>
+                    <option value="college">วิทยาลัย</option>
+                </select>
+                <button type="submit">บันทึกการแก้ไข</button>
+                <button type="button" id="cancel-edit">ยกเลิก</button>
+            </form>
+        </section>
+        <button id="back-to-calendar" title="กลับสู่ปฏิทิน">
+            <i class="fas fa-calendar-alt"></i>
+        </button>
+    </main>
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-date"></p>
+            <p id="modal-time"></p>
+            <p id="modal-location"></p>
+            <p id="modal-status"></p>
+            <div class="modal-buttons">
+                <button id="edit-btn" style="display: none;">แก้ไขกิจกรรม</button>
+                <button id="delete-btn" style="display: none;">ลบกิจกรรม</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
